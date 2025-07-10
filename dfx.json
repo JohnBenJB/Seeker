@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "Seeker_backend": {
+      "main": "src/Seeker_backend/main.mo",
+      "type": "motoko"
+    },
+    "Seeker_frontend": {
+      "dependencies": [
+        "Seeker_backend"
+      ],
+      "source": [
+        "src/Seeker_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "Seeker_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

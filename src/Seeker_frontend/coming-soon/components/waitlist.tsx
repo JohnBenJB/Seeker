@@ -39,7 +39,7 @@ const Waitlist: React.FC = () => {
         </h2>
 
         {formState === "success" ? (
-          <p className="mt-6 text-lg font-medium text-green-500">{message}</p>
+          <p className="mt-6 text-lg font-medium text-gray-600">{message}</p>
         ) : (
           <>
             <p className="mb-8 text-sm md:text-lg text-gray-600">

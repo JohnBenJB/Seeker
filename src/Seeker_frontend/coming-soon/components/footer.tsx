@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="pt-5 flex items-center justify-center text-center gap-3 text-xs md:text-md">
-        <p>&copy 2025</p> <p> All Rights Reserved</p>
+        <p>(c) 2025</p> <p> All Rights Reserved</p>
       </div>
     </footer>
   );

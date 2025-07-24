@@ -1,13 +1,12 @@
-import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="w-full pt-30 md:pt-20 pb-3 flex-col items-center justify-between bottom-0 right-0 left-0 text-center">
+    <footer className="w-full text-white pt-30 md:pt-20 pb-3 flex-col items-center justify-between bottom-0 right-0 left-0 text-center">
       <div className="w-full px-5 pb-2 flex items-center justify-between border-b border-neutral-600">
         <div className="flex items-center justify-between gap-2">
-          <Image
+          <img
             src="/images/seekerlogo.png"
             height={25}
             width={25}

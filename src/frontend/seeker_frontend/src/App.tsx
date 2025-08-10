@@ -1,17 +1,38 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Features from "./components/layout/features";
-import Footer from "./components/layout/footer";
 import Header from "./components/layout/header";
 import Works from "./components/layout/works";
+import Features from "./components/layout/features";
+import Footer from "./components/layout/footer";
+import About from "./components/pages/about";
+import Navbar from "./components/layout/navbar";
+import Docs from "./components/pages/docs";
+import Resources from "./components/pages/resources";
+import Contact from "./components/pages/contact";
 
-function App() {
+function Home() {
   return (
     <>
       <Header />
       <Works />
       <Features />
-      <Footer />
     </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/docs" element={<Docs />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

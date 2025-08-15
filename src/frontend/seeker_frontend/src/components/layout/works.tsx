@@ -4,7 +4,7 @@ export default function Works() {
   return (
     <div>
       <Card1 />
-      <div className="pt-70 w-full flex flex-col justify-between items-center text-center gap-20">
+      <div className="pt-70 w-full flex flex-col justify-between items-center text-center gap-20 overflow-hidden">
         <div className="flex flex-col justify-between items-center gap-1">
           <p className="text-2xl font-semibold">How Seeker Works</p>
           <div className="bg-neutral-500 w-20 h-1 rounded-3xl border-2 border-neutral-400"></div>

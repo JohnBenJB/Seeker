@@ -13,7 +13,7 @@ export default function Card1() {
           <p className="text-lg">Enjoy core benefits</p>
         </div>
         <div className="flex justify-between items-center gap-30 text-center">
-          <div className="relative">
+          <div className="max-w-sm relative">
             <img
               src="/images/rectangle.png"
               alt="img"

@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="w-full pt-70 bottom-0 right-0 left-0 text-center">
+    <footer className="w-full pt-70 bottom-0 right-0 left-0 text-center overflow-hidden">
       <div className="w-full px-10 py-5 flex items-center justify-between bg-gradient-to-br from-neutral-200 via-neutral-700 to-neutral-800 border-t-3 border-white">
         <div className="flex flex-col items-center justify-between gap-1">
           <img

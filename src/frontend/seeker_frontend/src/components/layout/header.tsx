@@ -2,23 +2,23 @@ import SearchInput from "../search/searchInput";
 
 export default function Header() {
   return (
-    <main className="relative w-screen h-290 overflow-hidden">
+    <main className="relative w-screen h-200 md:h-290 md:overflow-hidden px-5">
       <img
         src="/images/bg-hero-image.png"
         alt="bg"
-        className="absolute object-cover inset-0 w-full h-full pointer-events-none select-none"
+        className="absolute object-cover inset-0 z-0 w-full h-full pointer-events-none select-none"
       />
       <div className="relative z-10 flex flex-col">
-        <div className="flex flex-col justify-between items-center text-center gap-6 pt-30 md:pt-50">
-          <h1 className="text-3xl md:text-6xl font-bold leading-10">
+        <div className="flex flex-col justify-between items-center text-center gap-6 md:gap-8 pt-30 md:pt-50">
+          <h1 className="text-3xl md:text-6xl font-bold">
             Discover Web3 Like
             <br /> Never Before
           </h1>
           <p className="text-lg md:text-2xl">
-            Search the decentralized world- dApps, DAOs, canisters and docs -{" "}
+            Search the decentralized world- dApps, DAOs, canisters and docs -
             <br /> all in one place. Powered by ICP
           </p>
-          <div className="pt-25">
+          <div className="pt-20 md:pt-25">
             <SearchInput />
           </div>
         </div>

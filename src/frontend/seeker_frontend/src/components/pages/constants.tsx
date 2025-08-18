@@ -13,13 +13,13 @@ export const bentCards: Props[] = [
     id: 1,
     title: "Ask Anything",
     cardImage: cardImage1,
-    body: "Enter your question or topic. No account needed",
+    body: "Enter your question or topic. No account needed.",
   },
   {
     id: 1,
-    title: "Discover Contribute",
+    title: "Discover & Contribute",
     cardImage: cardImage2,
-    body: "Explore DApps, learn from technical articles, or deep-dive into ICP resources. If you're a builder, you can submit your own public resource for indeing and help grow the knowledge base. ",
+    body: "Explore DApps, learn from technical articles, or deep-dive into ICP resources. If you're a builder, you can submit your own public resource for indeing and help grow the knowledge base.",
   },
   {
     id: 1,

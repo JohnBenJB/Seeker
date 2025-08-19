@@ -7,6 +7,8 @@ export default function Header() {
         src="/images/bg-hero-image.png"
         alt="bg"
         className="absolute object-cover inset-0 z-0 w-full h-full pointer-events-none select-none"
+        loading="eager"
+        fetchPriority="high"
       />
       <div className="relative z-10 flex flex-col">
         <div className="flex flex-col justify-between items-center text-center gap-6 md:gap-8 pt-30 md:pt-50">

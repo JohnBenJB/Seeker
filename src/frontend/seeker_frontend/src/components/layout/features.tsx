@@ -88,6 +88,8 @@ export default function Features() {
             src="/images/icp-logo.png"
             alt="icp-logo"
             className="w-20 h-15 md:w-40 md:h-30"
+            loading="eager"
+            fetchPriority="high"
           />
           <div className="flex flex-col justify-between items-center gap-4 md:gap-8">
             <p className="text-md md:text-4xl font-semibold">

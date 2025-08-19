@@ -10,6 +10,8 @@ export default function Footer() {
             src="/images/logo-footer.png"
             alt="logo"
             className="fill-black w-13 h-13 md:w-20 md:h-20"
+            loading="eager"
+            fetchPriority="high"
           />
           <h3 className="text-md md:text-2xl text-black font-medium">Seeker</h3>
           <p className="text-[4px] md:text-[7px] text-black">

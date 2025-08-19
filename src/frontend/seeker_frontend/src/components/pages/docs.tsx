@@ -3,9 +3,9 @@ export default function Docs() {
   const ql = "{";
   const qr = "}";
   return (
-    <main className="w-full mt-15 flex-1 -mb-70">
-      <div className="grid grid-cols-1 md:grid-cols-5 text-left gap-0 mx-0">
-        <div className="flex flex-col gap-7 text-center text-md mt-10">
+    <main className="w-full mt-15 flex-1 md:-mb-70">
+      <div className="grid grid-cols-1 md:grid-cols-3 justify-center mx-0">
+        <div className="hidden md:flex max-w-[80%] h-full flex-col gap-6 text-center text-md mt-10 border-r border-neutral-500 pr-8">
           <div className="text-black font-medium py-2 bg-neutral-200 border-2 rounded-r-full">
             Api Usage
           </div>
@@ -20,17 +20,19 @@ export default function Docs() {
             Resources
           </div>
         </div>
-        <div className="mx-8 gap-0 inline-block bg-neutral-500 w-0.5"></div>
-        <div className="mx-0 flex flex-col justify-start text-left gap-20 mt-10">
+        <div className="mx-6 md:-ml-16 md:-mr-25 flex flex-col justify-start text-left gap-20 mt-10 md:border-r md:border-neutral-500 md:pr-8">
           <div>
-            <h1 className="text-4xl font-semibold">API USAGE</h1>
+            <h1 className="text-2xl md:text-4xl font-semibold pb-6 ">
+              API USAGE
+            </h1>
+            <div>
+              <h4 className="text-xl md:text-2xl">
+                Seeker API – Build with Search
+              </h4>
+              <div className="border-docs w-60"></div>
+            </div>
           </div>
-          <div>
-            <h4 className="text-2xl font-semibold">
-              Seeker API – Build with Search
-            </h4>
-            <div className="border-docs w-60"></div>
-          </div>
+
           <div>
             <h4 className="text-2xl font-semibold">Overview</h4>
             <div className="border-docs w-25"></div>
@@ -72,7 +74,7 @@ export default function Docs() {
               <p>filterBy [optional] – Resource type or category.</p>
               <p>Response [example]:</p>
             </div>
-            <div className="mt-5 py-5 px-10 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
+            <div className="mt-5 md:mx-10 py-7 px-6 md:py-5 md:px-10 text-[11px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
               [<p>{ql}</p>
               <p>"title": "Intro to Internet Computer",</p>
               <p> "url": "https://example.com/intro-icp",</p>
@@ -88,7 +90,7 @@ export default function Docs() {
             <p className="pt-15">POST /submit</p>
             <p>Submit a new on-chain resource to be indexed.</p>
             <p className="py-5">Body Parameters:</p>
-            <div className="py-5 px-10 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
+            <div className="mt-5 md:mx-10 py-7 px-6 md:py-5 md:px-10 text-[11px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
               <p>{ql}</p>
               <p> "title": "Learn Motoko in 7 Days",</p>
               <p> "url": "https://example.com/motoko-course",</p>
@@ -99,7 +101,7 @@ export default function Docs() {
             </div>
             <div>
               <p className="py-5">Response:</p>
-              <div className="py-5 px-10 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
+              <div className="md:mx-10 md:p-25 mt-5 p-15 text-[11px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
                 <p>
                   {ql}"status": "success", "resourceId": "abc123"{qr}
                 </p>
@@ -114,7 +116,7 @@ export default function Docs() {
             </p>
             <p>Retrieve a resource’s full metadata by its unique ID.</p>
             <p className="py-5">Response:</p>
-            <div className="py-5 px-10 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
+            <div className="mt-5 md:mx-10 py-7 px-6 md:py-5 md:px-10 text-[11px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
               <p>{ql}</p>
               <p> "id": "abc123",</p>
               <p> "title": "Learn Motoko in 7 Days",</p>
@@ -135,8 +137,7 @@ export default function Docs() {
             <p className="pt-5">Custom plans coming soon.</p>
           </div>
         </div>
-        <div className="mx-8 border border-neutral-500 bg-neutral-500 top-0 bottom-0"></div>
-        <div className="flex flex-col gap-3 mt-10">
+        <div className="hidden md:flex ml-25 pl-8 flex-col gap-3 mt-10">
           <h4 className="text-2xl font-semibold">On this Page </h4>
           <p>Usage</p>
           <p>Features</p>

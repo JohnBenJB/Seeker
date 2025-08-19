@@ -34,12 +34,14 @@ export default function ContactForm() {
       <div className="absolute inset-0 z-0 flex justify-center items-center mt-70 md:mt-0">
         <img
           src="/images/wave-nav.png"
-          className="absolute inset-0 w-full h-full object-contain md:pr-40 md:pt-100 scale-y-400 md:scale-y-0"
+          className="absolute inset-0 w-full h-full object-contain md:pr-40 md:pt-100 scale-y-400 md:scale-y-100"
+          loading="eager"
+          fetchPriority="high"
         />
       </div>
 
       <div className="flex flex-col md:flex-row px-5 md:px-25 gap-20 md:max-w-7xl w-full relative z-10">
-        <div className="flex-1 flex flex-col justify-between items-center md:justify-start md:pt-25 md:text-left">
+        <div className="flex-1 flex flex-col justify-between items-center md:justify-start md:pt-21 md:text-left">
           <h1 className="text-3xl md:text-6xl font-bold text-white mb-6">
             Contact Us
           </h1>
@@ -52,6 +54,8 @@ export default function ContactForm() {
                 src="/images/group-circle.png"
                 alt="logo"
                 className="absolute inset-0 z-0 object-cover p-20"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
             <div className="relative z-10 bg-neutral-300/10 backdrop-blur-xs border-3 border-neutral-500 rounded-2xl py-10 px-6 md:py-17 md:px-15">
@@ -103,7 +107,7 @@ export default function ContactForm() {
                     <input
                       type="text"
                       {...register("name")}
-                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
+                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[10px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
                       placeholder="Enter your full name"
                       disabled={submitContactMutation.isPending}
                     />
@@ -120,7 +124,7 @@ export default function ContactForm() {
                     <input
                       type="email"
                       {...register("email")}
-                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
+                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[10px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
                       placeholder="..name@gmail.com"
                       disabled={submitContactMutation.isPending}
                     />
@@ -139,7 +143,7 @@ export default function ContactForm() {
                     <input
                       type="text"
                       {...register("location")}
-                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
+                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[10px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
                       placeholder="Your location"
                       disabled={submitContactMutation.isPending}
                     />
@@ -156,7 +160,7 @@ export default function ContactForm() {
                     <input
                       type="tel"
                       {...register("phone")}
-                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
+                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[10px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
                       placeholder="Your phone number"
                       disabled={submitContactMutation.isPending}
                     />
@@ -175,7 +179,7 @@ export default function ContactForm() {
                     <textarea
                       rows={4}
                       {...register("message")}
-                      className="w-full px-3 py-3 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-2xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
+                      className="w-full px-3 py-3 md:px-4 md:py-3 text-[10px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-2xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
                       placeholder="Tell us about your inquiry..."
                       disabled={submitContactMutation.isPending}
                     />

@@ -3,7 +3,7 @@ import { bentCards, type Props } from "./constants";
 
 export default function About() {
   return (
-    <main className="mt-60 md:-mb-20 overflow-hidden">
+    <main className="mt-25 md:mt-60 md:-mb-20 overflow-hidden">
       <div className="px-5 md:px-20 flex flex-col items-center justify-center">
         <div className="pb-20 flex flex-row md:max-w-7xl w-full relative z-10 gap-20">
           <div className="flex-col justify-center items-center gap-12 md:pl-25 md:text-left">
@@ -28,6 +28,8 @@ export default function About() {
                 src="/images/group-circle.png"
                 alt="logo"
                 className="absolute inset-0 z-0 object-cover p-20"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
             <div className="relative z-10 top-10 w-140 h-160 justify-center items-center md:bg-neutral-600/40 md:backdrop-blur-xs md:border-3 md:border-neutral-500 md:rounded-2xl md:p-7">
@@ -37,6 +39,8 @@ export default function About() {
                 width={500}
                 height={500}
                 className="object-contain opacity-10 md:opacity-100"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -78,7 +82,13 @@ export default function About() {
             unstoppable Web3 access
           </p>
           <div className="w-1.5 h-10 md:h-14 bg-white border rounded-full"></div>
-          <img src="/images/icp-logo.png" alt="img" className="w-10 h-10" />
+          <img
+            src="/images/icp-logo.png"
+            alt="img"
+            className="w-10 h-7 md:w-40 md:h-30"
+            loading="eager"
+            fetchPriority="high"
+          />
         </div>
       </div>
     </main>

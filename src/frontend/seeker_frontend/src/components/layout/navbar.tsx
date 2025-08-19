@@ -22,7 +22,7 @@ export default function Navbar() {
       </div>
       <div className="relative z-50 flex justify-between items-center py-8 md:py-3 px-7 md:px-10">
         <div className="flex flex-col justify-between items-center">
-          <Link to="/">
+          <Link to="/home">
             <img
               src="/images/logo.png"
               alt="logo"
@@ -51,19 +51,19 @@ export default function Navbar() {
         <div className="fixed right-0 top-0 z-50 bg-black w-[50%] h-full px-6 flex flex-col justify-center md:hidden border-l-2 border-b-2 border-neutral-500">
           <div className="py-5 pb-7 flex flex-col justify-start gap-6 text-md">
             <div className="flex flex-col justify-between gap-6">
-              <Link to="/" className="text-md">
+              <Link to="/home" className="text-md">
                 Home
               </Link>
-              <Link to="/" className="text-md">
+              <Link to="/about" className="text-md">
                 About
               </Link>
-              <Link to="/" className="text-md">
+              <Link to="/docs" className="text-md">
                 Docs
               </Link>
-              <Link to="/" className="text-md">
+              <Link to="/resources" className="text-md">
                 Submit Resource
               </Link>
-              <Link to="/" className="text-md">
+              <Link to="/contact" className="text-md">
                 Contact
               </Link>
             </div>

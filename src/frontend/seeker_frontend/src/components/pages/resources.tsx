@@ -9,12 +9,7 @@ import {
 export default function ContactForm() {
   const submitContactMutation = useSubmitContact();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<ContactFormData>({
+  const { register, handleSubmit, reset } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
 
@@ -30,16 +25,18 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center mt-60 -mb-20 overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center mt-30 md:mt-60 -mb-20 overflow-hidden">
       <div className="absolute inset-0 z-0 flex justify-center items-center mt-70 md:mt-0">
         <img
           src="/images/wave-nav.png"
-          className="absolute inset-0 w-full h-full object-contain md:pr-40 md:pt-100 scale-y-400 md:scale-y-0"
+          className="absolute inset-0 w-full h-full object-contain md:pr-40 md:pt-100 scale-y-400 md:scale-y-100"
+          loading="eager"
+          fetchPriority="high"
         />
       </div>
 
       <div className="flex flex-col md:flex-row px-5 md:px-25 gap-20 md:max-w-7xl w-full relative z-10">
-        <div className="flex-1 flex flex-col justify-between items-center md:justify-start md:pt-25 md:text-left">
+        <div className="flex-1 flex flex-col justify-between items-center md:items-start md:justify-start md:pt-5 md:text-left">
           <h1 className="text-3xl md:text-6xl font-bold text-white mb-6">
             Submit <br className="hidden md:block" /> Resource
           </h1>
@@ -52,9 +49,11 @@ export default function ContactForm() {
                 src="/images/group-circle.png"
                 alt="logo"
                 className="absolute inset-0 z-0 object-cover p-20"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
-            <div className="relative z-10 bg-neutral-300/10 backdrop-blur-xs border-3 border-neutral-500 rounded-2xl py-13 px-6 md:py-17 md:px-15">
+            <div className="relative z-10 bg-neutral-300/10 backdrop-blur-xs border-3 border-neutral-500 rounded-2xl py-13 px-6 md:py-17 md:px-10">
               {submitContactMutation.isSuccess && (
                 <div className="relative z-20 mb-6 p-4 bg-green-900/30 border border-green-500/50 rounded-lg">
                   <div className="flex items-center text-green-300">
@@ -101,9 +100,9 @@ export default function ContactForm() {
                 className="space-y-8 relative z-20 "
               >
                 <div>
-                  <div className="flex justify-between items-center gap-8">
-                    <label className="block text-gray-300 text-sm md:text-lg">
-                      Resource{ " "}Name
+                  <div className="flex justify-between items-center gap-7 md:gap-15">
+                    <label className="block text-gray-300 text-xs md:text-md">
+                      Name
                     </label>
                     <input
                       type="text"
@@ -112,15 +111,12 @@ export default function ContactForm() {
                       disabled={submitContactMutation.isPending}
                     />
                   </div>
-                  {errors.name && (
-                    <p className="mt-2 text-sm text-red-400">
-                      {errors.name.message}
-                    </p>
-                  )}
                 </div>
                 <div>
-                  <div className="flex justify-between items-center gap-7">
-                    <label className="block text-gray-300 text-md">Type</label>
+                  <div className="flex justify-between items-center gap-8 md:gap-15">
+                    <label className="block text-gray-300 text-xs md:text-md">
+                      Type
+                    </label>
                     <input
                       type="text"
                       {...register("email")}
@@ -128,15 +124,12 @@ export default function ContactForm() {
                       disabled={submitContactMutation.isPending}
                     />
                   </div>
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-400">
-                      {errors.email.message}
-                    </p>
-                  )}
                 </div>
                 <div>
-                  <div className="flex justify-between items-center gap-7">
-                    <label className="block text-gray-300 text-md">URL</label>
+                  <div className="flex justify-between items-center gap-10 md:gap-17">
+                    <label className="block text-gray-300 text-xs md:text-md">
+                      URL
+                    </label>
                     <input
                       type="URL"
                       {...register("location")}
@@ -144,16 +137,11 @@ export default function ContactForm() {
                       disabled={submitContactMutation.isPending}
                     />
                   </div>
-                  {errors.location && (
-                    <p className="mt-1 text-sm text-red-400">
-                      {errors.location.message}
-                    </p>
-                  )}
                 </div>
                 <div>
-                  <div className="flex justify-between items-center gap-7">
-                    <label className="block text-gray-300 text-md">
-                      Github Repo
+                  <div className="flex justify-between items-center gap-6 md:gap-14">
+                    <label className="block text-gray-300 text-xs md:text-md">
+                      Github
                     </label>
                     <input
                       type="url"
@@ -163,45 +151,31 @@ export default function ContactForm() {
                       disabled={submitContactMutation.isPending}
                     />
                   </div>
-                  {errors.phone && (
-                    <p className="mt-1 text-sm text-red-400">
-                      {errors.phone.message}
-                    </p>
-                  )}
                 </div>
                 <div>
-                  <div className="flex justify-between items-center gap-7">
-                    <label className="block text-gray-300 text-md">
+                  <div className="flex justify-between items-center gap-5 md:gap-15">
+                    <label className="block text-gray-300 text-xs md:text-md">
                       Description
                     </label>
                     <textarea
                       rows={4}
-                      {...register("message")}
-                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
+                      {...register("description")}
+                      className="w-full resize-none px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-4xl md:rounded-full text-white focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
                       disabled={submitContactMutation.isPending}
                     />
                   </div>
-                  {errors.message && (
-                    <p className="mt-1 text-sm text-red-400">
-                      {errors.message.message}
-                    </p>
-                  )}
                 </div>
                 <div>
-                  <div className="flex justify-between items-center gap-7">
-                    <label className="block text-gray-300 text-md">Tags</label>
+                  <div className="flex justify-between items-center gap-10 md:gap-25">
+                    <label className="block text-gray-300 text-xs md:text-md">
+                      Tags
+                    </label>
                     <textarea
-                      rows={4}
-                      {...register("message")}
-                      className="w-full px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
+                      {...register("tags")}
+                      className="w-full resize-none scrollbar-none overflow-y-auto px-2 py-1 md:px-4 md:py-3 text-[12px] md:text-md bg-neutral-300/10 border-2 border-neutral-400 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition-all"
                       disabled={submitContactMutation.isPending}
                     />
                   </div>
-                  {errors.message && (
-                    <p className="mt-1 text-sm text-red-400">
-                      {errors.message.message}
-                    </p>
-                  )}
                 </div>
                 <div className="flex justify-center pt-4">
                   <button

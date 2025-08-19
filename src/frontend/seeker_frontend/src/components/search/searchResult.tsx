@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { searchResources } from "@/lib/icAgent";
+// import { searchResources } from "@/lib/icAgent";
 
 type MetadataRecord = {
   id: string;
@@ -15,17 +15,17 @@ type MetadataRecord = {
 export default function SearchResults() {
   const { search } = useLocation();
   const query = new URLSearchParams(search).get("q") || "";
-  const [results, setResults] = useState<MetadataRecord[]>([]);
+  const [results] = useState<MetadataRecord[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!query) return;
     setLoading(true);
 
-    searchResources(query).then((data) => {
-      setResults(data || []);
-      setLoading(false);
-    });
+    // searchResources(query).then((data) => {
+    //   setResults(data || []);
+    //   setLoading(false);
+    // });
   }, [query]);
 
   return (

@@ -1,24 +1,35 @@
+import { Link } from "react-router-dom";
+
 export default function Docs() {
   const queryText = "{query}";
   const ql = "{";
   const qr = "}";
+
   return (
     <main className="w-full mt-15 flex-1 md:-mb-70">
       <div className="grid grid-cols-1 md:grid-cols-3 justify-center mx-0">
         <div className="hidden md:flex max-w-[80%] h-full flex-col gap-6 text-center text-md mt-10 border-r border-neutral-500 pr-8">
-          <div className="text-black font-medium py-2 bg-neutral-200 border-2 rounded-r-full">
-            Api Usage
-          </div>
-          <div className="py-2 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-r-full border-neutral-400">
-            Contribution Guide
-          </div>
-          <div className="py-2 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-r-full border-neutral-400">
-            Open Source Github Link
-          </div>
-          <div className="py-2 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-r-full border-neutral-400 leading-5">
-            Instructions For Submitting <br />
-            Resources
-          </div>
+          <Link to="/docs">
+            <div className="text-black font-medium py-2 bg-neutral-200 border-2 rounded-r-full">
+              Api Usage
+            </div>
+          </Link>
+          <Link to="/docs-2">
+            <div className="cursor-pointer py-2 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-r-full border-neutral-400">
+              Contribution Guide
+            </div>
+          </Link>
+          <Link to="/docs-3">
+            <div className="cursor-pointer py-2 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-r-full border-neutral-400">
+              Open Source Github Link
+            </div>
+          </Link>
+          <Link to="/docs-4">
+            <div className="cursor-pointer py-2 bg-gradient-to-br from-neutral-600 to-black border-2 rounded-r-full border-neutral-400 leading-5">
+              Instructions For Submitting <br />
+              Resources
+            </div>
+          </Link>
         </div>
         <div className="mx-6 md:-ml-16 md:-mr-25 flex flex-col justify-start text-left gap-20 mt-10 md:border-r md:border-neutral-500 md:pr-8">
           <div>

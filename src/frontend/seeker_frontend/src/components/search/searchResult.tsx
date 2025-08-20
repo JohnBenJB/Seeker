@@ -29,15 +29,15 @@ export default function SearchResults() {
   }, [query]);
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">
+    <div className="p-6 min-h-screen">
+      <h2 className="text-2xl font-semibold mb-4">
         Search Results for: <span className="text-blue-600">{query}</span>
       </h2>
 
-      {loading && <p className="text-gray-500">Loading...</p>}
+      {loading && <p className="text-2xl">Loading...</p>}
 
       {!loading && results.length === 0 && (
-        <p className="text-gray-500">No results found.</p>
+        <p className="text-xl">No results found.</p>
       )}
 
       <div className="grid gap-4">
@@ -50,11 +50,11 @@ export default function SearchResults() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg font-semibold text-blue-600 hover:underline"
+              className="text-lg font-semibold text-black hover:underline"
             >
               {item.title}
             </a>
-            <p className="text-gray-600 mt-1">{item.description}</p>
+            <p className="text-neutral-600 mt-1">{item.description}</p>
             <div className="flex flex-wrap gap-2 mt-2">
               <span className="text-sm bg-gray-200 px-2 py-1 rounded">
                 {item.category}
@@ -62,7 +62,7 @@ export default function SearchResults() {
               {item.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded"
+                  className="text-sm font-medium bg-blue-100 text-black px-2 py-1 rounded"
                 >
                   #{tag}
                 </span>

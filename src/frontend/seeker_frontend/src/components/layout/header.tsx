@@ -11,16 +11,16 @@ export default function Header() {
         fetchPriority="high"
       />
       <div className="relative z-10 flex flex-col">
-        <div className="flex flex-col justify-between items-center text-center gap-6 md:gap-8 pt-30 md:pt-50">
+        <div className="flex flex-col justify-between items-center text-center gap-8 pt-30 md:pt-50">
           <h1 className="text-3xl md:text-6xl font-bold">
             Discover Web3 Like
             <br /> Never Before
           </h1>
-          <p className="text-lg md:text-2xl">
+          <p className="text-[15px] md:text-2xl">
             Search the decentralized world- dApps, DAOs, canisters and docs -
             <br /> all in one place. Powered by ICP
           </p>
-          <div className="pt-20 md:pt-25">
+          <div className="pt-17 md:pt-25">
             <SearchInput />
           </div>
         </div>

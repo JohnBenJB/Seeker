@@ -40,13 +40,13 @@ export default function Docs() {
               <h4 className="text-xl md:text-2xl">
                 Seeker API – Build with Search
               </h4>
-              <div className="border-docs w-60"></div>
+              <div className="border-docs w-67"></div>
             </div>
           </div>
 
           <div>
             <h4 className="text-2xl font-semibold">Overview</h4>
-            <div className="border-docs w-25"></div>
+            <div className="border-docs w-26"></div>
             <p className="mt-15 text-md">
               The Seeker API enables developers to programmatically interact
               with Seeker’s decentralized search infrastructure. From querying
@@ -57,7 +57,7 @@ export default function Docs() {
           </div>
           <div>
             <h4 className="text-2xl font-semibold">Base URL</h4>
-            <div className="border-docs"></div>
+            <div className="border-docs w-25"></div>
             <p className="mt-15">https://seeker.icp/api</p>
           </div>
           <div>
@@ -97,7 +97,7 @@ export default function Docs() {
           </div>
           <div>
             <h4 className="text-2xl font-semibold">Submit a Resource</h4>
-            <div className="border-docs"></div>
+            <div className="border-docs w-50"></div>
             <p className="pt-15">POST /submit</p>
             <p>Submit a new on-chain resource to be indexed.</p>
             <p className="py-5">Body Parameters:</p>
@@ -121,7 +121,7 @@ export default function Docs() {
           </div>
           <div>
             <h4 className="text-2xl font-semibold"> Fetch a Resource</h4>
-            <div className="border-docs"></div>
+            <div className="border-docs w-46"></div>
             <p className="pt-15">
               GET /resource/{ql}id{qr}
             </p>
@@ -140,7 +140,7 @@ export default function Docs() {
           </div>
           <div className="pb-20">
             <h4 className="text-2xl font-semibold">Rate Limits & Quotas</h4>
-            <div className="border-docs"></div>
+            <div className="border-docs w-58"></div>
             <p className="pt-15">
               Currently, Seeker APIs are rate-limited to prevent abuse.
             </p>

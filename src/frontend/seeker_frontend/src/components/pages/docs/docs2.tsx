@@ -33,10 +33,18 @@ export default function Docs2() {
             <h1 className="text-2xl md:text-4xl font-semibold pb-6">
               Contribution Guide
             </h1>
+            <div>
+              <h4 className="text-xl md:text-2xl">
+                Build With Us: Contribution Guide
+              </h4>
+              <div className="border-docs w-67"></div>
+            </div>
+            <p className="mt-20 text-md">Welcome, Builder!</p>
             <p className="text-md">
-              Whether you are a developer, designer, researcher, or enthusiast —
-              your contributions help Seeker grow into a stronger decentralized
-              search ecosystem.
+              Seeker is open-source and community-first. Our mission is to
+              decentralize knowledge access in the Web3 space, starting with the
+              Internet Computer ecosystem. You can contribute to our codebase,
+              documentation, or even curate knowledge.
             </p>
           </div>
           <div>

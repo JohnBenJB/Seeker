@@ -120,10 +120,9 @@ export default function Docs2() {
         </div>
         <div className="hidden md:flex ml-25 pl-8 flex-col gap-3 mt-10">
           <h4 className="text-2xl font-semibold">On this Page </h4>
-          <p>Usage</p>
+          <p>Roles</p>
           <p>Features</p>
           <p>Examples</p>
-          <p>Links</p>
         </div>
       </div>
     </main>

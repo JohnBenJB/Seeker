@@ -85,8 +85,7 @@ export default function Docs3() {
         <div className="hidden md:flex ml-25 pl-8 flex-col gap-3 mt-10">
           <h4 className="text-2xl font-semibold">On this Page </h4>
           <p>Usage</p>
-          <p>Features</p>
-          <p>Examples</p>
+          <p>Structure</p>
           <p>Links</p>
         </div>
       </div>

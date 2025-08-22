@@ -16,7 +16,7 @@ export default function SearchInput() {
   return (
     <form
       onSubmit={handleSearch}
-      className="flex text-left gap-2 md:gap-20 w-full max-w-xl md:max-w-3xl bg-gradient-to-l from-neutral-900 via-neutral-600 to-neutral-500 border-2 rounded-full border-neutral-500 px-2 md:px-20 md:py-2"
+      className="flex text-left gap-1 md:gap-20 w-full max-w-xl md:max-w-3xl bg-gradient-to-l from-neutral-900 via-neutral-600 to-neutral-500 border-2 rounded-full border-neutral-500 px-2 md:px-20 md:py-2"
     >
       <div className="flex">
         <input
@@ -28,7 +28,7 @@ export default function SearchInput() {
         />
       </div>
       <button type="submit" className="py-2 hover:scale-x-95 transition">
-        <Search className="md:w-10 md:h-10" />
+        <Search className="md:w-10 md:h-10 -ml-7 md:ml-5" />
       </button>
     </form>
   );

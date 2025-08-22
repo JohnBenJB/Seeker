@@ -5,55 +5,55 @@ export default function Features() {
   return (
     <main className="pt-30 md:pt-70">
       <div className="flex flex-col justify-between items-center text-center">
+        {/* Title */}
         <div className="flex flex-col justify-between items-center gap-1">
           <p className="text-2xl font-semibold">Features</p>
           <div className="bg-neutral-500 w-20 h-1 rounded-3xl border-2 border-neutral-400"></div>
         </div>
-        <div className="mt-5 relative w-[500px] h-[200px] md:w-[800px] md:h-[300px] flex justify-center items-center text-center">
+
+        {/* Features container */}
+        <div className="mt-5 relative w-[320px] h-[200px] md:w-[800px] md:h-[300px] flex justify-center items-center text-center">
           {features.map((feature: Props, index: number) => {
-            let positionStyle = {};
-            let zIndex = "";
+            let positionStyle: React.CSSProperties = {};
+            let zIndexClass = "";
 
             if (index === 0) {
-              positionStyle = {
-                top: "50px",
-                transform: "scale(1.3)",
-              };
-              zIndex = "z-50";
+              positionStyle = { top: "40px", transform: "scale(1.1)" };
+              zIndexClass = "z-50";
             } else if (index === 1) {
               positionStyle = {
-                right: "150px md:300px",
-                top: "50px",
-                transform: "scale(1.2)",
+                right: "250px",
+                top: "40px",
+                transform: "scale(1.0)",
               };
-              zIndex = "z-40";
+              zIndexClass = "z-40";
             } else if (index === 2) {
               positionStyle = {
-                left: "300px",
-                top: "50px",
-                transform: "scale(1.2)",
+                left: "250px",
+                top: "40px",
+                transform: "scale(1.0)",
               };
-              zIndex = "z-40";
+              zIndexClass = "z-40";
             } else if (index === 3) {
               positionStyle = {
-                right: "450px",
-                top: "50px",
-                transform: "scale(1.1)",
+                right: "350px",
+                top: "40px",
+                transform: "scale(0.9)",
               };
-              zIndex = "z-30";
+              zIndexClass = "z-30";
             } else if (index === 4) {
               positionStyle = {
-                left: "450px",
-                top: "50px",
-                transform: "scale(1.1)",
+                left: "350px",
+                top: "40px",
+                transform: "scale(0.9)",
               };
-              zIndex = "z-30";
+              zIndexClass = "z-30";
             }
 
             return (
               <div
                 key={feature.id}
-                className={`absolute w-[300px] h-[200px] md:w-[500px] md:h-[350px] flex justify-center items-center ${zIndex} transition-all duration-500 hover:scale-105`}
+                className={`absolute ${zIndexClass} w-[200px] h-[150px] md:w-[500px] md:h-[350px] flex justify-center items-center transition-all duration-500 hover:scale-105`}
                 style={positionStyle}
               >
                 <img
@@ -61,7 +61,7 @@ export default function Features() {
                   alt="card"
                   className="absolute inset-0 w-full h-full object-contain"
                 />
-                <div className="absolute inset-0 z-10 px-10 flex flex-col justify-center items-center p-4 animate-float">
+                <div className="absolute inset-0 z-10 px-6 flex flex-col justify-center items-center p-4 animate-float">
                   <div
                     className={`${
                       index >= 1 && index <= 4 ? "blur-xs" : ""
@@ -72,7 +72,7 @@ export default function Features() {
                   <div
                     className={`${
                       index >= 1 && index <= 4 ? "blur-xs" : ""
-                    } text-sm font-semibold text-black`}
+                    } text-[10px] md:text-sm font-semibold text-black`}
                   >
                     {feature.body}
                   </div>
@@ -83,7 +83,7 @@ export default function Features() {
         </div>
       </div>
       <div className="mt-40 md:mt-90 px-5 md:px-15">
-        <div className="py-8 md:py-15 px-3 md:px-5 flex flex-row md:flex-col justify-between items-center gap-7 md:gap-10 text-center bg-gradient-to-br from-neutral-300 to-neutral-800 rounded-4xl border-2 border-neutral-50">
+        <div className="py-8 md:py-15 px-3 md:px-5 flex flex-row md:flex-col justify-between items-center gap-4 md:gap-10 text-center bg-gradient-to-br from-neutral-300 to-neutral-800 rounded-4xl border-2 border-neutral-50">
           <img
             src="/images/icp-logo.png"
             alt="icp-logo"

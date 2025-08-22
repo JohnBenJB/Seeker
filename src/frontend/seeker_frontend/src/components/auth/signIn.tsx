@@ -28,7 +28,7 @@ export default function SignIn() {
           </div>
           <div className="md:hidden">
             <div className="">
-              <Navbar />
+            <Navbar/>
             </div>
             <div className="mt-20 flex flex-col justify-between items-center gap-3">
               <h1 className="text-2xl font-semibold">Sign In</h1>

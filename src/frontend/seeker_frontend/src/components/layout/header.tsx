@@ -12,7 +12,7 @@ export default function Header() {
       />
       <div className="relative z-10 flex flex-col">
         <div className="flex flex-col justify-between items-center text-center gap-8 pt-30 md:pt-50">
-          <h1 className="text-3xl md:text-6xl font-bold">
+          <h1 className="text-[28px] md:text-6xl font-bold">
             Discover Web3 Like
             <br /> Never Before
           </h1>

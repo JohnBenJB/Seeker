@@ -31,7 +31,13 @@ export default function Footer() {
             <p className="text-[11px] md:text-lg font-semibold">Socials</p>
             <div className="flex justify-between items-center gap-2 md:gap-9">
               <FaTelegram className="w-4 h-4 md:w-10 md:h-10" />
-              <FaXTwitter className="w-4 h-4 md:w-10 md:h-10" />
+              <a
+                href="https://x.com/SeekerICP"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaXTwitter className="w-4 h-4 md:w-10 md:h-10" />{" "}
+              </a>
               <FaDiscord className="w-4 h-4 md:w-10 md:h-10" />
             </div>
           </div>

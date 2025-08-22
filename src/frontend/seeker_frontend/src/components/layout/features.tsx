@@ -98,7 +98,13 @@ export default function Features() {
             </p>
             <button className="flex justify-between items-center gap-3 px-3 py-2 bg-gradient-to-r from-neutral-400 to-neutral-600 rounded-full border-3 border-neutral-500 text-center">
               <FaGithub className="text-black" size={30} />
-              <p className="font-semibold">Github</p>
+              <a
+                href="https://github.com/JohnBenJB/Seeker"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p className="font-semibold">Github</p>
+              </a>
             </button>
           </div>
         </div>

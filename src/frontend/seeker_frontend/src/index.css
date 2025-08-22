@@ -76,6 +76,11 @@ button:hover {
   border-color: #4b4545e7;
 }
 
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #000000;

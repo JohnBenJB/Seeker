@@ -1,9 +1,7 @@
+import { FaCodeFork } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export default function Docs2() {
-  const ql = "{";
-  const qr = "}";
-
   return (
     <main className="w-full mt-15 flex-1 md:-mb-70">
       <div className="grid grid-cols-1 md:grid-cols-3 justify-center mx-0">
@@ -37,7 +35,7 @@ export default function Docs2() {
               <h4 className="text-xl md:text-2xl">
                 Build With Us: Contribution Guide
               </h4>
-              <div className="border-docs w-67"></div>
+              <div className="border-docs w-94"></div>
             </div>
             <p className="mt-20 text-md">Welcome, Builder!</p>
             <p className="text-md">
@@ -49,79 +47,83 @@ export default function Docs2() {
           </div>
           <div>
             <h4 className="text-2xl font-semibold">Developer Contributions</h4>
-            <div className="border-docs w-25"></div>
-            <p className="mt-15 text-md">
-              Improve features, fix bugs, or expand integrations with the Seeker
-              API.
-            </p>
-            <div className="mt-5 md:mx-10 py-7 px-6 md:px-10 text-[12px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
-              <p>{ql}</p>
-              <p>Languages: Motoko, Rust, JavaScript</p>
-              <p> Framework: React, Vite, TailwindCSS</p>
-              <p> Version Control: GitHub (open-source repo)</p>
-              <p>{qr}</p>
+            <div className="border-docs w-71"></div>
+            <div className="pt-15 flex items-center gap-2">
+              <FaCodeFork className="fill-neutral-500" />
+              <p>Code Contributions</p>
+            </div>
+            <ul>
+              <li>Fork our Github repository.</li>
+              <li>Set up locally (see README).</li>
+              <li>Pick an issue from the "good first issue" tag.</li>
+              <li>Create a branch, commit your changes, and open a PR.</li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-md">Tech Stack</p>
+            <div className="mt-5 md:mx-10 py-7 px-6 md:p-14 text-[12px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
+              <ul className="flex flex-col justify-center gap-3">
+                <li>Backend: Motoko</li>
+                <li> Frontend: React + TailwindCSS</li>
+                <li> Hosting: Internet computer Canisters</li>
+              </ul>
             </div>
           </div>
+
           <div>
             <h4 className="text-2xl font-semibold">
               Submit New Features / Ideas
             </h4>
-            <div className="border-docs w-45"></div>
-            <p className="pt-15">
-              Propose enhancements, integrations, or improvements to how Seeker
-              indexes and presents decentralized resources.
-            </p>
-            <div className="mt-5 md:mx-10 py-7 px-6 md:px-10 text-[12px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
-              <p>{ql}</p>
-              <p>Example: Dark mode toggle</p>
-              <p> Example: Web3 wallet authentication</p>
-              <p> Example: Category-based search filters</p>
-              <p>{qr}</p>
+            <div className="border-docs w-12 md:w-86"></div>
+            <p className="pt-15">Open a GitHub issue to propose:</p>
+            <div className="mt-5 md:mx-10 py-7 px-6 md:p-14 text-[12px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
+              <ul className="flex flex-col justify-between gap-3">
+                <li>New search algorithms</li>
+                <li>Smart indexing enhancements</li>
+                <li> Resource validation tools</li>
+              </ul>
             </div>
           </div>
           <div>
             <h4 className="text-2xl font-semibold">
               Non-Technical Contributions
             </h4>
-            <div className="border-docs w-60"></div>
+            <div className="border-docs w-83"></div>
             <p className="pt-15">
-              You don’t need to code to contribute! Help by creating educational
-              content, sharing resources, or providing design feedback.
+              Improve our documentation.Improve our documentation.
             </p>
+            <p>Suggest educational resources for indexing.</p>
+            <p>Help translate Seeker into other languages.</p>
           </div>
           <div>
             <h4 className="text-2xl font-semibold">
               Contributor Roles (Future DAO Plan)
             </h4>
-            <div className="border-docs w-70"></div>
+            <div className="border-docs w-15 md:w-105"></div>
             <p className="pt-15">
-              Seeker aims to transition into a DAO model where contributors earn
-              roles and governance rights.
+              We aim to transition governance to the community.
             </p>
-            <div className="mt-5 md:mx-10 py-7 px-6 md:px-10 text-[12px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
-              <p>{ql}</p>
-              <p>Research Curators</p>
-              <p> Developer Maintainers</p>
-              <p> Community Moderators</p>
-              <p>{qr}</p>
+          </div>
+          <div>
+            <p>Roles may include: </p>
+            <div className="mt-5 md:mx-10 py-7 px-6 md:p-14 text-[12px] md:text-[15px] bg-gradient-to-br from-neutral-600 to-black border-2 rounded-3xl border-neutral-400">
+              <ul className="flex flex-col justify-between gap-3">
+                <p>Verifiers: Curate and validate submissions.</p>
+                <p> Maintainers: Manage codebase & updates.</p>
+                <p> Evangelists: Grow Seeker's reach.</p>
+              </ul>
             </div>
           </div>
           <div className="pb-20">
-            <h4 className="text-2xl font-semibold">Final Note</h4>
-            <div className="border-docs w-32"></div>
-            <p className="pt-15">
-              All contributions are welcomed and valued — together, we build a
-              decentralized future of search.
-            </p>
+            <p>All contributions are welcomed and valued.</p>
           </div>
         </div>
         <div className="hidden md:flex ml-25 pl-8 flex-col gap-3 mt-10">
-          <h4 className="text-2xl font-semibold">On this Page</h4>
-          <p>Developer Contributions</p>
-          <p>New Features</p>
-          <p>Non-Technical</p>
-          <p>Contributor Roles</p>
-          <p>Final Note</p>
+          <h4 className="text-2xl font-semibold">On this Page </h4>
+          <p>Usage</p>
+          <p>Features</p>
+          <p>Examples</p>
+          <p>Links</p>
         </div>
       </div>
     </main>

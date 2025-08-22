@@ -18,6 +18,8 @@ import Contact from "./components/pages/contact";
 import SignIn from "./components/auth/signIn";
 import SearchResultsPage from "./components/search/searchResult";
 import Docs2 from "./components/pages/docs/docs2";
+import Docs3 from "./components/pages/docs/docs3";
+import Docs4 from "./components/pages/docs/docs4";
 
 function Home() {
   return (
@@ -53,6 +55,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/docs" element={<Docs />} />
             <Route path="/docs-2" element={<Docs2 />} />
+            <Route path="/docs-3" element={<Docs3 />} />
+            <Route path="/docs-4" element={<Docs4 />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
           </Route>

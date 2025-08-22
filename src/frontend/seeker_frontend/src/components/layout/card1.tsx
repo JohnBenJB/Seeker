@@ -13,7 +13,12 @@ export default function Card1() {
               Powered by ICP
             </p>
           </div>
-          <div className="hidden md:block">
+
+          <div className="hidden md:flex justify-between gap-90 items-center">
+            <p className="text-[12px] md:text-3xl font-semibold">
+              The Web3 Discovery Layer - <br className="hidden md:block" />
+              Powered by ICP
+            </p>
             <p className="text-lg">Enjoy core benefits</p>
           </div>
         </div>
@@ -22,7 +27,7 @@ export default function Card1() {
             <img
               src="/images/rectangle.png"
               alt="img"
-              className="hidden md:absolute w-full h-full scale-x-[-1] pointer-events-none select-none object-contain"
+              className="hidden md:flex absolute w-full h-full scale-x-[-1] pointer-events-none select-none object-contain"
             />
             <div className="flex flex-col justify-between items-center gap-5 pt-20 md:py-20 md:px-12">
               <FaSearch size={70} className="rotate-90" />
@@ -51,7 +56,7 @@ export default function Card1() {
             <img
               src="/images/rectangle.png"
               alt="img"
-              className="hidden md:absolute w-full h-full pointer-events-none select-none object-contain"
+              className="hidden md:flex absolute w-full h-full pointer-events-none select-none object-contain"
             />
             <div className="flex flex-col justify-between items-center gap-5 md:py-20 md:px-12">
               <HiUsers size={70} />

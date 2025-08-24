@@ -5,14 +5,19 @@
       "type": "motoko"
     },
     "Seeker_frontend": {
-      "dependencies": [
-        "Seeker_backend"
-      ],
-      "source": [
-        "src/Seeker_frontend/dist"
-      ],
+      "dependencies": ["Seeker_backend"],
       "type": "assets",
-      "workspace": "Seeker_frontend"
+      "source": ["src/frontend/seeker_frontend/dist"],
+      "build": [
+        "npm install --prefix src/frontend/seeker_frontend",
+        "npm run build --prefix src/frontend/seeker_frontend"
+      ]
+    }
+  },
+  "networks": {
+    "local": {
+      "Seeker_backend": "uxrrr-q7777-77774-qaaaq-cai",
+      "Seeker_frontend": "u6s2n-gx777-77774-qaaba-cai"
     }
   },
   "defaults": {

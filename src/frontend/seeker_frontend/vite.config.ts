@@ -1,16 +1,14 @@
-import react from "@vitejs/plugin-react";
+// vite.config.ts
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    watch: {
-      usePolling: true,
-    },
+  base: "./",
+  optimizeDeps: {
+    include: ["@dfinity/agent"], // pre-bundle for browser
   },
-  resolve: {
-    alias: {
-      "@": "/src",
-    },
+  build: {
+    rollupOptions: {},
   },
 });

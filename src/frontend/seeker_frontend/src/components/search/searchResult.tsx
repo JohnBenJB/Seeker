@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import type { Resource } from "../../lib/icAgent";
 import { searchResources } from "../../lib/icAgent";
@@ -6,18 +6,18 @@ import { searchResources } from "../../lib/icAgent";
 export default function SearchResults() {
   const { search } = useLocation();
   const query = new URLSearchParams(search).get("q") || "";
-  const [results, setResults] = useState<Resource[]>([]);
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (!query) return;
-    setLoading(true);
+  // Add generic type <Resource[]> for React Query
+  const { data: results = [], isLoading, isError } = useQuery<Resource[]>({
+    queryKey: ["searchResources", query],
+    queryFn: () => searchResources(query),
+    enabled: !!query, // only run if query exists
+    staleTime: 1000 * 60, // 1 minute
+  });
 
-    searchResources(query).then((data) => {
-      setResults(data || []);
-      setLoading(false);
-    });
-  }, [query]);
+  if (isLoading) return <p className="text-2xl">Loading...</p>;
+  if (isError)
+    return <p className="text-xl text-red-600">Error fetching results</p>;
 
   return (
     <div className="p-6 min-h-screen">
@@ -25,16 +25,12 @@ export default function SearchResults() {
         Search Results for: <span className="text-blue-600">{query}</span>
       </h2>
 
-      {loading && <p className="text-2xl">Loading...</p>}
-
-      {!loading && results.length === 0 && (
-        <p className="text-xl">No results found.</p>
-      )}
+      {results.length === 0 && <p className="text-xl">No results found.</p>}
 
       <div className="grid gap-4">
         {results.map((item, index) => (
           <div
-            key={`${item.title}-${index}`}
+            key={`${item.id}-${index}`}
             className="p-4 rounded-xl bg-white shadow hover:shadow-md transition"
           >
             <a
@@ -51,9 +47,19 @@ export default function SearchResults() {
                 {item.category}
               </span>
             </div>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {item.tags?.map((tag: string, i: number) => (
+                <span
+                  key={i}
+                  className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+
             <p className="text-sm text-gray-500 mt-2">
-              ⭐ Views: {Number(item.views)} | Rating:{" "}
-              {Number(item.totalRating)}/{Number(item.ratingCount)}
+              🔥 Popularity Score: {item.popularity}
             </p>
           </div>
         ))}

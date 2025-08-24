@@ -10,10 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dfinity/agent": "^3.2.1",
+    "@dfinity/agent": "^3.2.2",
+    "@dfinity/auth-client": "^3.2.2",
     "@dfinity/candid": "^3.2.1",
     "@hookform/resolvers": "^5.2.1",
-    "@tanstack/react-query": "^5.85.0",
+    "@tanstack/react-query": "^5.85.5",
     "@tanstack/react-router": "^1.131.27",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

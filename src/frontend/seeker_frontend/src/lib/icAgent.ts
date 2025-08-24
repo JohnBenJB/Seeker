@@ -1,76 +1,57 @@
-import { HttpAgent } from "@dfinity/agent";
+import { HttpAgent, Actor } from "@dfinity/agent";
+import type { MetadataRecord } from "./backendTypes";
+import { idlFactory as seeker_idl } from "../../../../declarations/Seeker_backend/Seeker_backend.did.js";
 
-// Define the Resource type that your frontend expects
 export interface Resource {
+  id: string;
   title: string;
   description: string;
   category: string;
   url: string;
-  timestamp: bigint;
-  views: bigint;
-  totalRating: bigint;
-  ratingCount: bigint;
-  submitter: string;
-}
-
-// Define CanisterInfo type based on the generated declarations
-interface CanisterInfo {
-  id: string;
-  url: string;
-  status: string;
-  metadata: {
-    tvl: string;
-    twitter: string;
-    users: string;
-    launch_date: string;
-    github: string;
-    developer: string;
-  };
-  name: string;
   tags: string[];
-  canister_id: string;
-  description: string;
-  category: string;
+  searchKeywords: string[];
+  popularity: number;
+  timestamp?: bigint;
+  views?: bigint;
+  totalRating?: bigint;
+  ratingCount?: bigint;
+  submitter?: string;
 }
 
-// Create agent
-const agent = new HttpAgent({
-  host:
-    typeof window !== "undefined" && window.location.hostname === "localhost"
-      ? "http://127.0.0.1:4943"
-      : "https://ic0.app",
-});
+// Use the actual local canister ID
+const seeker_id = "uxrrr-q7777-77774-qaaaq-cai";
 
-// Fetch root key for certificate validation during development
-if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+const agent = new HttpAgent({ host: "http://127.0.0.1:4943" });
+agent.fetchRootKey(); // only for local
+
+// Fetch the root key only for local development
+if (window?.location.hostname === "localhost") {
   agent.fetchRootKey().catch((err) => {
     console.warn(
-      "Unable to fetch root key. Check to ensure that your local replica is running"
+      "Unable to fetch root key. Make sure your local replica is running."
     );
     console.error(err);
   });
 }
 
-// TODO: Once the backend is properly deployed, uncomment this:
-// import {
-//   idlFactory as seeker_idl,
-//   canisterId as seeker_id,
-// } from "../../declarations/Seeker_backend";
+// Create the Actor to interact with the backend
+export const seekerActor = Actor.createActor(seeker_idl, {
+  agent,
+  canisterId: seeker_id,
+});
 
-// Create actor (placeholder for now)
-// const seekerActor = Actor.createActor(seeker_idl, {
-//   agent,
-//   canisterId: seeker_id,
-// });
-
-// Convert CanisterInfo to Resource format
-function convertCanisterToResource(canister: CanisterInfo): Resource {
+// Convert a backend MetadataRecord to the frontend Resource type
+function convertRecordToResource(record: MetadataRecord): Resource {
   return {
-    title: canister.name,
-    description: canister.description,
-    category: canister.category,
-    url: canister.url,
-    timestamp: BigInt(Date.now() * 1000000), // Convert to nanoseconds
+    id: record.id,
+    title: record.title,
+    description: record.description,
+    category: record.category,
+    url: record.url,
+    tags: record.tags,
+    searchKeywords: record.searchKeywords,
+    popularity: record.popularity,
+    timestamp: BigInt(Date.now() * 1000000),
     views: BigInt(0),
     totalRating: BigInt(0),
     ratingCount: BigInt(0),
@@ -78,99 +59,37 @@ function convertCanisterToResource(canister: CanisterInfo): Resource {
   };
 }
 
-// Call search function
+// Fetch resources by search query
 export async function searchResources(query: string): Promise<Resource[]> {
   try {
-    console.log("Searching for:", query);
-
-    // TODO: Once backend is deployed, uncomment this:
-    // const results = await seekerActor.searchCanisters(query);
-    // const resources = results.map(convertCanisterToResource);
-    // return resources;
-
-    // For now, return mock data for testing
-    const mockResults: CanisterInfo[] = [
-      {
-        id: "icpswap",
-        name: "ICPSwap",
-        description:
-          "The premier decentralized exchange (DEX) on the Internet Computer",
-        category: "DeFi",
-        url: "https://app.icpswap.com",
-        status: "active",
-        metadata: {
-          tvl: "$5M+",
-          twitter: "@ICPSwap",
-          users: "10K+",
-          launch_date: "2022-03-01",
-          github: "https://github.com/ICPSwap-Labs",
-          developer: "ICPSwap Team",
-        },
-        tags: ["dex", "trading", "swap"],
-        canister_id: "ca6gz-lqaaa-aaaah-qby5q-cai",
-      },
-      {
-        id: "sonic",
-        name: "Sonic DEX",
-        description:
-          "Fast and efficient decentralized exchange with advanced trading features",
-        category: "DeFi",
-        url: "https://app.sonic.ooo",
-        status: "active",
-        metadata: {
-          tvl: "$2M+",
-          twitter: "@SonicDEX",
-          users: "5K+",
-          launch_date: "2023-01-15",
-          github: "https://github.com/SonicDEX",
-          developer: "Sonic Team",
-        },
-        tags: ["dex", "trading", "amm"],
-        canister_id: "abc123-def456-ghi789",
-      },
-    ];
-
-    // Filter mock results based on query
-    const filteredResults = mockResults.filter(
-      (item) =>
-        item.name.toLowerCase().includes(query.toLowerCase()) ||
-        item.description.toLowerCase().includes(query.toLowerCase()) ||
-        item.category.toLowerCase().includes(query.toLowerCase()) ||
-        item.tags.some((tag) => tag.toLowerCase().includes(query.toLowerCase()))
-    );
-
-    const resources = filteredResults.map(convertCanisterToResource);
-    console.log("Mock results:", resources);
-
-    return resources;
+    const titles = (await seekerActor.search(query)) as string[];
+    const allRecords = (await seekerActor.getAllRecords()) as MetadataRecord[];
+    const filteredRecords = allRecords.filter((r) => titles.includes(r.title));
+    return filteredRecords.map(convertRecordToResource);
   } catch (err) {
     console.error("Search failed:", err);
     return [];
   }
 }
 
-// Additional backend functions for future use
+// Fetch all resources
 export async function getAllResources(): Promise<Resource[]> {
   try {
-    console.log("Getting all resources");
-    // TODO: Implement when backend supports this
-    return [];
+    const allRecords = (await seekerActor.getAllRecords()) as MetadataRecord[];
+    return allRecords.map(convertRecordToResource);
   } catch (err) {
-    console.error("Failed to get all resources:", err);
+    console.error("Failed to fetch all resources:", err);
     return [];
   }
 }
 
+// Fetch all unique categories
 export async function getCategories(): Promise<string[]> {
   try {
-    // TODO: Once backend is deployed, uncomment this:
-    // const categories = await seekerActor.getCategories();
-    // return categories;
-
-    // Return mock categories for now
-    return ["DeFi", "Gaming", "Social", "NFT", "DAO", "Infrastructure"];
+    const allRecords = (await seekerActor.getAllRecords()) as MetadataRecord[];
+    return Array.from(new Set(allRecords.map((r) => r.category)));
   } catch (err) {
-    console.error("Failed to get categories:", err);
+    console.error("Failed to fetch categories:", err);
     return [];
   }
 }

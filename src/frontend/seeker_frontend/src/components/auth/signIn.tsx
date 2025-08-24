@@ -1,13 +1,17 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../layout/navbar";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function SignIn() {
   const navigate = useNavigate();
+  const { isAuthenticated, login } = useAuth();
 
-  const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    navigate("/home");
-  };
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated, navigate]);
   return (
     <main>
       <div className="grid grid-col-1 md:grid-cols-2 justify-center md:justify-between items-center overflow-hidden">
@@ -28,7 +32,7 @@ export default function SignIn() {
           </div>
           <div className="md:hidden">
             <div className="">
-            <Navbar/>
+              <Navbar />
             </div>
             <div className="mt-20 flex flex-col justify-between items-center gap-3">
               <h1 className="text-2xl font-semibold">Sign In</h1>
@@ -56,14 +60,12 @@ export default function SignIn() {
                     fetchPriority="high"
                   />
                   <div>
-                    <form onSubmit={handleClick}>
-                      <button
-                        type="submit"
-                        className="px-9 py-2 bg-gradient-to-r from-black to-neutral-500 border-2 border-neutral-400 rounded-full hover:border-neutral-800outline-none"
-                      >
-                        Internet Identity
-                      </button>
-                    </form>
+                    <button
+                      onClick={login}
+                      className="px-9 py-2 bg-gradient-to-r from-black to-neutral-500 border-2 border-neutral-400 rounded-full hover:border-neutral-800outline-none"
+                    >
+                      Internet Identity
+                    </button>
                   </div>
                 </div>
               </div>

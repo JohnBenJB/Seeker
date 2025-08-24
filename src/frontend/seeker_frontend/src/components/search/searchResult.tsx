@@ -8,7 +8,11 @@ export default function SearchResults() {
   const query = new URLSearchParams(search).get("q") || "";
 
   // Add generic type <Resource[]> for React Query
-  const { data: results = [], isLoading, isError } = useQuery<Resource[]>({
+  const {
+    data: results = [],
+    isLoading,
+    isError,
+  } = useQuery<Resource[]>({
     queryKey: ["searchResources", query],
     queryFn: () => searchResources(query),
     enabled: !!query, // only run if query exists

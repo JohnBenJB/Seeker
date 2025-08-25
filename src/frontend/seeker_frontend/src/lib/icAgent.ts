@@ -1,6 +1,23 @@
-import { HttpAgent, Actor } from "@dfinity/agent";
-import type { MetadataRecord } from "./backendTypes";
-import { idlFactory as seeker_idl } from "../../../../declarations/Seeker_backend/Seeker_backend.did.js";
+export interface Metadata {
+  developer?: string;
+  launch_date?: string;
+  tvl?: string;
+  users?: string;
+  github?: string;
+  twitter?: string;
+}
+
+export interface CanisterJSON {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  tags: string[];
+  url: string;
+  canister_id: string;
+  status: string;
+  metadata?: Metadata;
+}
 
 export interface Resource {
   id: string;
@@ -11,85 +28,76 @@ export interface Resource {
   tags: string[];
   searchKeywords: string[];
   popularity: number;
-  timestamp?: bigint;
-  views?: bigint;
-  totalRating?: bigint;
-  ratingCount?: bigint;
-  submitter?: string;
+  timestamp: bigint;
+  views: bigint;
+  totalRating: bigint;
+  ratingCount: bigint;
+  submitter: string;
+  metadata?: Metadata;
 }
 
-// Use the actual local canister ID
-const seeker_id = "uxrrr-q7777-77774-qaaaq-cai";
+const DATA_URL = "/json/canisters.json";
 
-const agent = new HttpAgent({ host: "http://127.0.0.1:4943" });
-agent.fetchRootKey(); // only for local
+async function fetchData(): Promise<Resource[]> {
+  try {
+    const response = await fetch(DATA_URL);
+    if (!response.ok) throw new Error("Failed to load JSON data");
 
-// Fetch the root key only for local development
-if (window?.location.hostname === "localhost") {
-  agent.fetchRootKey().catch((err) => {
-    console.warn(
-      "Unable to fetch root key. Make sure your local replica is running."
-    );
-    console.error(err);
-  });
+    const json: { canisters: CanisterJSON[] } = await response.json();
+
+    return json.canisters.map((c) => ({
+      id: c.id,
+      title: c.name,
+      description: c.description,
+      category: c.category,
+      url: c.url,
+      tags: c.tags,
+      searchKeywords: [
+        c.name,
+        c.description,
+        ...c.tags,
+        c.metadata?.developer || "",
+        c.metadata?.github || "",
+        c.metadata?.twitter || "",
+        c.metadata?.tvl || "",
+        c.metadata?.users || "",
+      ].filter(Boolean),
+      popularity: parseInt(c.metadata?.users?.replace(/\D/g, "") || "0"),
+      timestamp: BigInt(Date.now() * 1000000),
+      views: BigInt(0),
+      totalRating: BigInt(0),
+      ratingCount: BigInt(0),
+      submitter: c.metadata?.developer || "system",
+      metadata: c.metadata,
+    }));
+  } catch (err) {
+    console.error("Error fetching mock JSON:", err);
+    return [];
+  }
 }
 
-// Create the Actor to interact with the backend
-export const seekerActor = Actor.createActor(seeker_idl, {
-  agent,
-  canisterId: seeker_id,
-});
-
-// Convert a backend MetadataRecord to the frontend Resource type
-function convertRecordToResource(record: MetadataRecord): Resource {
-  return {
-    id: record.id,
-    title: record.title,
-    description: record.description,
-    category: record.category,
-    url: record.url,
-    tags: record.tags,
-    searchKeywords: record.searchKeywords,
-    popularity: record.popularity,
-    timestamp: BigInt(Date.now() * 1000000),
-    views: BigInt(0),
-    totalRating: BigInt(0),
-    ratingCount: BigInt(0),
-    submitter: "system",
-  };
-}
-
-// Fetch resources by search query
 export async function searchResources(query: string): Promise<Resource[]> {
-  try {
-    const titles = (await seekerActor.search(query)) as string[];
-    const allRecords = (await seekerActor.getAllRecords()) as MetadataRecord[];
-    const filteredRecords = allRecords.filter((r) => titles.includes(r.title));
-    return filteredRecords.map(convertRecordToResource);
-  } catch (err) {
-    console.error("Search failed:", err);
-    return [];
-  }
+  const allRecords = await fetchData();
+  const lowerQuery = query.toLowerCase();
+
+  const filtered = allRecords.filter(
+    (r) =>
+      r.title.toLowerCase().includes(lowerQuery) ||
+      r.description.toLowerCase().includes(lowerQuery) ||
+      r.category.toLowerCase().includes(lowerQuery) ||
+      r.tags.some((t) => t.toLowerCase().includes(lowerQuery)) ||
+      r.submitter.toLowerCase().includes(lowerQuery) ||
+      r.searchKeywords.some((k) => k.toLowerCase().includes(lowerQuery))
+  );
+
+  return filtered;
 }
 
-// Fetch all resources
 export async function getAllResources(): Promise<Resource[]> {
-  try {
-    const allRecords = (await seekerActor.getAllRecords()) as MetadataRecord[];
-    return allRecords.map(convertRecordToResource);
-  } catch (err) {
-    console.error("Failed to fetch all resources:", err);
-    return [];
-  }
+  return await fetchData();
 }
 
-// Fetch all unique categories
 export async function getCategories(): Promise<string[]> {
-  try {
-    const allRecords = (await seekerActor.getAllRecords()) as MetadataRecord[];
-    return Array.from(new Set(allRecords.map((r) => r.category)));
-  } catch (err) {
-    console.error("Failed to fetch categories:", err);
-    return [];
-  }
+  const allRecords = await fetchData();
+  return Array.from(new Set(allRecords.map((r) => r.category)));
 }

@@ -26,7 +26,7 @@ export default function SearchResults() {
   return (
     <div className="p-6 min-h-screen">
       <h2 className="text-2xl font-semibold mb-4">
-        Search Results for: <span className="text-blue-600">{query}</span>
+        Search Results for: <span className="text-neutral-800">{query}</span>
       </h2>
 
       {results.length === 0 && <p className="text-xl">No results found.</p>}
@@ -47,7 +47,7 @@ export default function SearchResults() {
             </a>
             <p className="text-neutral-600 mt-1">{item.description}</p>
             <div className="flex flex-wrap gap-2 mt-2">
-              <span className="text-sm bg-gray-200 px-2 py-1 rounded">
+              <span className="text-sm bg-gray-200 px-2 py-1 rounded text-neutral-400">
                 {item.category}
               </span>
             </div>

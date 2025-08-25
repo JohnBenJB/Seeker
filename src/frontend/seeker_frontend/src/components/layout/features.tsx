@@ -5,84 +5,63 @@ export default function Features() {
   return (
     <main className="pt-30 md:pt-70">
       <div className="flex flex-col justify-between items-center text-center">
-        {/* Title */}
         <div className="flex flex-col justify-between items-center gap-1">
           <p className="text-2xl font-semibold">Features</p>
           <div className="bg-neutral-500 w-20 h-1 rounded-3xl border-2 border-neutral-400"></div>
         </div>
-
-        {/* Features container */}
         <div className="mt-5 relative w-[320px] h-[200px] md:w-[800px] md:h-[300px] flex justify-center items-center text-center">
-          {features.map((feature: Props, index: number) => {
-            let positionStyle: React.CSSProperties = {};
-            let zIndexClass = "";
-
-            if (index === 0) {
-              positionStyle = { top: "40px", transform: "scale(1.1)" };
-              zIndexClass = "z-50";
-            } else if (index === 1) {
-              positionStyle = {
-                right: "250px",
-                top: "40px",
-                transform: "scale(1.0)",
-              };
-              zIndexClass = "z-40";
-            } else if (index === 2) {
-              positionStyle = {
-                left: "250px",
-                top: "40px",
-                transform: "scale(1.0)",
-              };
-              zIndexClass = "z-40";
-            } else if (index === 3) {
-              positionStyle = {
-                right: "350px",
-                top: "40px",
-                transform: "scale(0.9)",
-              };
-              zIndexClass = "z-30";
-            } else if (index === 4) {
-              positionStyle = {
-                left: "350px",
-                top: "40px",
-                transform: "scale(0.9)",
-              };
-              zIndexClass = "z-30";
-            }
-
-            return (
-              <div
-                key={feature.id}
-                className={`absolute ${zIndexClass} w-[200px] h-[150px] md:w-[500px] md:h-[350px] flex justify-center items-center transition-all duration-500 hover:scale-105`}
-                style={positionStyle}
-              >
-                <img
-                  src={feature.cardImage}
-                  alt="card"
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
-                <div className="absolute inset-0 z-10 px-6 flex flex-col justify-center items-center p-4 animate-float">
-                  <div
-                    className={`${
-                      index >= 1 && index <= 4 ? "blur-xs" : ""
-                    } filter invert`}
-                  >
-                    {feature.icon}
-                  </div>
-                  <div
-                    className={`${
-                      index >= 1 && index <= 4 ? "blur-xs" : ""
-                    } text-[10px] md:text-sm font-semibold text-black`}
-                  >
-                    {feature.body}
-                  </div>
+          {features.map((feature: Props, index: number) => (
+            <div
+              key={feature.id}
+              className={`absolute w-[200px] h-[150px] md:w-[500px] md:h-[350px] flex justify-center items-center transition-all duration-500 hover:scale-105
+                ${index === 0 ? "z-50 md:top-[40px] scale-110" : ""}
+                ${
+                  index === 1
+                    ? "z-40 right-[80px] md:right-[250px] md:top-[40px] scale-100"
+                    : ""
+                }
+                ${
+                  index === 2
+                    ? "z-40 left-[80px] md:left-[250px] md:top-[40px] scale-100"
+                    : ""
+                }
+                ${
+                  index === 3
+                    ? "z-30 right-[100px] md:right-[350px] md:top-[40px] scale-90"
+                    : ""
+                }
+                ${
+                  index === 4
+                    ? "z-30 left-[100px] md:left-[350px] md:top-[40px] scale-90"
+                    : ""
+                }`}
+            >
+              <img
+                src={feature.cardImage}
+                alt="card"
+                className="absolute inset-0 w-full h-full object-contain"
+              />
+              <div className="absolute inset-0 z-10 px-6 flex flex-col justify-center items-center p-4 animate-float">
+                <div
+                  className={`${
+                    index >= 1 && index <= 4 ? "blur-xs" : ""
+                  } filter invert`}
+                >
+                  {feature.icon}
+                </div>
+                <div
+                  className={`${
+                    index >= 1 && index <= 4 ? "blur-xs" : ""
+                  } text-[10px] md:text-sm font-semibold text-black`}
+                >
+                  {feature.body}
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
-      <div className="mt-40 md:mt-90 px-5 md:px-15">
+      <div className="mt-20 md:mt-90 px-5 md:px-15">
         <div className="py-8 md:py-15 px-3 md:px-5 flex flex-row md:flex-col justify-between items-center gap-4 md:gap-10 text-center bg-gradient-to-br from-neutral-300 to-neutral-800 rounded-4xl border-2 border-neutral-50">
           <img
             src="/images/icp-logo.png"

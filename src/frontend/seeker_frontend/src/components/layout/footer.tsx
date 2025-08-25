@@ -1,6 +1,7 @@
 import { FaDiscord, FaTelegram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "../auth/logout";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -41,18 +42,23 @@ export default function Footer() {
               <FaDiscord className="w-4 h-4 md:w-10 md:h-10" />
             </div>
           </div>
-          <div className="flex flex-col justify-between items-center gap-3 md:gap-6">
-            <p className="text-[8px] md:text-lg font-semibold">
-              Login with Internet Identity
-            </p>
-            <form onSubmit={handleClick}>
-              <button
-                type="submit"
-                className="bg-neutral-900 px-6 md:px-8 py-2 md:py-4 md:text-2xl rounded-full border-2 border-neutral-600"
-              >
-                Sign In
-              </button>
-            </form>
+          <div className="flex flex-col md:flex-rowjustify-center gap-2 items-center">
+            <div className="flex flex-col justify-between items-center gap-3 md:gap-6">
+              <p className="text-[8px] md:text-lg font-semibold">
+                Login with Internet Identity
+              </p>
+              <form onSubmit={handleClick}>
+                <button
+                  type="submit"
+                  className="bg-neutral-900 px-6 md:px-8 py-2 md:py-4 md:text-2xl rounded-full border-2 border-neutral-600"
+                >
+                  Sign In
+                </button>
+              </form>
+            </div>
+            <div className="flex justify-center items-center text-xs">
+              <LogoutButton />
+            </div>
           </div>
         </div>
       </div>

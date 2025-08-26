@@ -57,4 +57,13 @@ persistent actor class Indexing() {
   public shared func getAllRecords() : async [Types.MetadataRecord] {
     return records;
   };
+
+
+  // Returns all unique categories
+  public shared func getCategories() : async [Text] {
+    let cats = Array.map(records, func(r) { r.category });
+    Array.dedup(cats, func(a, b) { a == b });
+  }
+
+
 };

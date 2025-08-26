@@ -7,7 +7,11 @@ export default function SearchResults() {
   const { search } = useLocation();
   const query = new URLSearchParams(search).get("q") || "";
 
-  const { data: results = [], isLoading, isError } = useQuery<Resource[]>({
+  const {
+    data: results = [],
+    isLoading,
+    isError,
+  } = useQuery<Resource[]>({
     queryKey: ["searchResources", query],
     queryFn: () => searchResources(query),
     enabled: !!query, // only run if query exists
@@ -17,11 +21,12 @@ export default function SearchResults() {
   if (isLoading) return <p className="text-2xl">Loading...</p>;
   if (isError)
     return <p className="text-xl text-red-600">Error fetching results</p>;
+  console.log("Search results:", results);
 
   return (
     <div className="p-6 min-h-screen">
       <h2 className="text-2xl font-semibold mb-4">
-        Search Results for: <span className="text-neutral-800">{query}</span>
+        Search Results for: <span className="text-neutral-600">{query}</span>
       </h2>
 
       {results.length === 0 && <p className="text-xl">No results found.</p>}

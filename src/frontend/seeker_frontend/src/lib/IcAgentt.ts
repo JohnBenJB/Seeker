@@ -1,6 +1,6 @@
 import { createActor } from "../../../../declarations/Seeker_backend";
 
-const canisterId = import.meta.env.CANISTER_ID_SEEKER_BACKEND;
+const canisterId = import.meta.env.VITE_CANISTER_ID_SEEKER_BACKEND;
 
 const seekerActor = createActor(canisterId);
 export interface Resource {

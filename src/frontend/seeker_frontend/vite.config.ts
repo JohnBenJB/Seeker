@@ -1,14 +1,21 @@
-// vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
   base: "./",
-  optimizeDeps: {
-    include: ["@dfinity/agent"], // pre-bundle for browser
+  resolve: {
+    alias: {
+      process: "process/browser",
+      stream: "stream-browserify",
+      util: "util",
+    },
   },
-  build: {
-    rollupOptions: {},
+  optimizeDeps: {
+    include: [
+      "@dfinity/agent",
+      "@dfinity/auth-client",
+      "@dfinity/candid"
+    ],
   },
 });

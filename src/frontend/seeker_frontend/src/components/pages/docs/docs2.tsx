@@ -49,7 +49,9 @@ export default function Docs2() {
             <h4 className="text-2xl font-semibold">Developer Contributions</h4>
             <div className="border-docs w-71"></div>
             <div className="pt-15 flex items-center gap-2">
-              <FaCodeFork className="fill-neutral-500" />
+              <span className="fill-neutral-500">
+                <FaCodeFork />
+              </span>
               <p>Code Contributions</p>
             </div>
             <ul>

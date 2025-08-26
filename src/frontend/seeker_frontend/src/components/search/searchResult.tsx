@@ -1,18 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
-import type { Resource } from "../../lib/icAgent";
-import { searchResources } from "../../lib/icAgent";
+import type { Resource } from "../../lib/IcAgentt";
+import { searchResources } from "../../lib/IcAgentt";
 
 export default function SearchResults() {
   const { search } = useLocation();
   const query = new URLSearchParams(search).get("q") || "";
 
-  // Add generic type <Resource[]> for React Query
-  const {
-    data: results = [],
-    isLoading,
-    isError,
-  } = useQuery<Resource[]>({
+  const { data: results = [], isLoading, isError } = useQuery<Resource[]>({
     queryKey: ["searchResources", query],
     queryFn: () => searchResources(query),
     enabled: !!query, // only run if query exists
@@ -52,7 +47,7 @@ export default function SearchResults() {
               </span>
             </div>
             <div className="flex flex-wrap gap-2 mt-2">
-              {item.tags?.map((tag: string, i: number) => (
+              {item.tags?.map((tag, i) => (
                 <span
                   key={i}
                   className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded"
@@ -61,7 +56,6 @@ export default function SearchResults() {
                 </span>
               ))}
             </div>
-
             <p className="text-sm text-gray-500 mt-2">
               🔥 Popularity Score: {item.popularity}
             </p>

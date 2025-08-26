@@ -5,18 +5,21 @@
   },
   "name": "Seeker",
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "prebuild": "npm run prebuild --workspaces --if-present",
-    "pretest": "npm run prebuild --workspaces --if-present",
-    "start": "npm start --workspaces --if-present",
-    "test": "npm test --workspaces --if-present"
+    "build": "cd src/frontend/seeker_frontend && npm run build",
+    "start": "cd src/frontend/seeker_frontend && npm start",
+    "test": "cd src/frontend/seeker_frontend && npm test"
   },
   "type": "module",
   "workspaces": [
-    "src/Seeker_frontend"
+    "src/frontend/seeker_frontend"
   ],
   "devDependencies": {
     "@rolldown/pluginutils": "^1.0.0-beta.28",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5"
   }
 }

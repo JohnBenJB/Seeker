@@ -16,6 +16,14 @@ id_*
 # dfx temporary files
 .dfx/
 
+# TypeScript build outputs
+src/**/*.js
+*.tsbuildinfo
+*.js
+
+
+
+
 # generated files
 **/declarations/
 

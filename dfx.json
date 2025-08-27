@@ -7,10 +7,10 @@
     "Seeker_frontend": {
       "dependencies": ["Seeker_backend"],
       "type": "assets",
-      "source": ["src/frontend/seeker_frontend/dist"],
+      "source": ["src/Seeker_frontend/dist"],
       "build": [
-        "npm install --prefix src/frontend/seeker_frontend",
-        "npm run build --prefix src/frontend/seeker_frontend"
+        "npm install --prefix src/Seeker_frontend",
+        "npm run build --prefix src/Seeker_frontend"
       ]
     }
   },

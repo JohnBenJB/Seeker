@@ -1,4 +1,4 @@
-import { createActor } from "../../../../declarations/Seeker_backend";
+import { createActor } from "../../../declarations/Seeker_backend";
 
 const canisterId = import.meta.env.VITE_CANISTER_ID_SEEKER_BACKEND;
 

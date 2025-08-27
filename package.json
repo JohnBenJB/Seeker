@@ -5,13 +5,13 @@
   },
   "name": "Seeker",
   "scripts": {
-    "build": "cd src/frontend/seeker_frontend && npm run build",
-    "start": "cd src/frontend/seeker_frontend && npm start",
-    "test": "cd src/frontend/seeker_frontend && npm test"
+    "build": "cd src/Seeker_frontend && npm run build",
+    "start": "cd src/Seeker_frontend && npm start",
+    "test": "cd src/Seeker_frontend && npm test"
   },
   "type": "module",
   "workspaces": [
-    "src/frontend/seeker_frontend"
+    "src/Seeker_frontend"
   ],
   "devDependencies": {
     "@rolldown/pluginutils": "^1.0.0-beta.28",
